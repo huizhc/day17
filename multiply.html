@@ -8,25 +8,17 @@
 </head>
 <script type="text/javascript">
     let itable = document.createElement("table");
-    for (let k = 0; k < 9; k ++) {
-        console.log("haha");
+    for (let i = 2; i <= 9; i ++) {
         let itr = document.createElement("tr");
-        for (let l = 0; l < 9; l ++) {
-            console.log("hehe");
-            itr.appendChild(document.createElement("td"));
+        for (let j = i; j <= 9; j ++) {
+            let itd = document.createElement("td");
+            let txt = document.createTextNode(i + "x" + j + "=" + i * j);
+            itd.appendChild(txt);
+            itr.appendChild(itd);
         }
         itable.appendChild(itr);
     }
     document.documentElement.appendChild(itable);
-    for (let i = 2; i <= 9; i ++) {
-        for (let j = i; j <= 9; j ++) {
-            console.log(itable.childNodes[i - 1].childNodes[j - 1]);
-            // console.log(i + "x" + j + "=" + i * j);
-            // itable.childNodes[i].childNodes[j] = i + "x" + j + "=" + i * j;
-        }
-    }
-    
-    
 </script>
 <style>
     table {
