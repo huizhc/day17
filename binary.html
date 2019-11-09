@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+
+function dec2bin(decNumber) {
+    // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+    if (decNumber < 0) return false;
+    
+}
+function numSub(num1, num2) {
+	var baseNum, baseNum1, baseNum2;
+	var precision;// 精度
+	try {
+		baseNum1 = num1.toString().split(".")[1].length;
+	} catch (e) {
+		baseNum1 = 0;
+	}
+	try {
+		baseNum2 = num2.toString().split(".")[1].length;
+	} catch (e) {
+		baseNum2 = 0;
+	}
+	baseNum = Math.pow(10, Math.max(baseNum1, baseNum2));
+	precision = (baseNum1 >= baseNum2) ? baseNum1 : baseNum2;
+	return ((num1 * baseNum - num2 * baseNum) / baseNum).toFixed(precision);
+};
+
+// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+// Some coding
+    let btn = document.getElementById("trans-btn");
+    btn.onclick = function () {
+        let inumber = document.getElementById("dec-number");
+        if (inumber.value === '' && inumber.value < 0) return false;
+        let gtzero = Math.floor(inumber.value);
+        let ltzero = Number('0.' + inumber.value.split('.')[1]);
+        // console.log(gtzero);
+        // console.log(ltzero);
+        let binary = [];
+        while (gtzero > 0) {
+            binary.unshift(gtzero % 2); 
+            gtzero = Math.floor(gtzero / 2);     
+        }
+        i = 0;
+        while (i <= 15) {
+            ltzero *= 2;
+            // console.log("chengle", ltzero);
+            binary.push(Math.floor(ltzero));
+            ltzero = numSub(ltzero, Math.floor(ltzero));
+            i++;
+        }
+        let res = document.getElementById('result');
+        res.firstChild.textContent = binary.join('');
+    }
+    </script>
+</body>
+</html>

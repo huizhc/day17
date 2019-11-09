@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    let itable = document.createElement("table");
+    for (let k = 0; k < 9; k ++) {
+        console.log("haha");
+        let itr = document.createElement("tr");
+        for (let l = 0; l < 9; l ++) {
+            console.log("hehe");
+            itr.appendChild(document.createElement("td"));
+        }
+        itable.appendChild(itr);
+    }
+    document.documentElement.appendChild(itable);
+    for (let i = 2; i <= 9; i ++) {
+        for (let j = i; j <= 9; j ++) {
+            console.log(itable.childNodes[i - 1].childNodes[j - 1]);
+            // console.log(i + "x" + j + "=" + i * j);
+            // itable.childNodes[i].childNodes[j] = i + "x" + j + "=" + i * j;
+        }
+    }
+    
+    
+</script>
+<style>
+    table {
+        border: 1px solid #000;
+    }
+    td {
+        border: 1px solid #000;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html>
